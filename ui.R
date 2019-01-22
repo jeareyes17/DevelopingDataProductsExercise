@@ -8,8 +8,9 @@
 #
 
 library(shiny)
-library(mlbench)
-# Define UI for application that draws a histogram
+# Is there a relationship between humidity and temperature? 
+# What about between humidity and apparent temperature? 
+# Can you predict the apparent temperature given the humidity?
 shinyUI(fluidPage(
   
   # Application title
@@ -19,13 +20,13 @@ shinyUI(fluidPage(
   sidebarLayout(
     sidebarPanel(
        sliderInput("sliderdis",
-                   "What is the distance of the house from the employment centers?",
-                   min = 1,
-                   max = 16,
-                   value = 5),
-       checkboxInput("showModel1", "Show/Hide Model 1", value =TRUE),
-       checkboxInput("showModel2", "Show/Hide Model 2", value = TRUE)
-    ),
+                   "Please specify the humidity:",
+                   min = 0,
+                   max = 1,
+                   value = 0.5),
+       radioButtons("radio", label = h3("Selected outcome for:"),
+                    choices = list("Apparent Temperature" = 1, "Temperature" = 2), 
+                    selected = 1)),
     
     # Show a plot of the generated distribution
     mainPanel(
